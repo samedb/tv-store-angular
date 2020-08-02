@@ -8,7 +8,14 @@ import { TV } from "../models/TV"
 export class CartService {
   cartItems: CartItem[] = [];
 
-  constructor() { }
+  constructor() {
+    // Ucitaj sve predmete iz localStore u korpu/cart
+    this.cartItems = JSON.parse(localStorage.getItem("cart")) || []
+  }
+
+  saveCartToLocalStorage() {
+    localStorage.setItem("cart", JSON.stringify(this.cartItems))
+  }
 
   addToCart(product: TV) {
     const item = this.cartItems.find(p => p.TV.ean === product.ean)
@@ -16,6 +23,7 @@ export class CartService {
       this.cartItems.push(new CartItem(product, 1));
     else
       item.quantity++
+    this.saveCartToLocalStorage()
   }
 
   removeFromCart(product: TV) {
@@ -26,10 +34,12 @@ export class CartService {
     else
       // Smanji kolicinu za jedan
       item.quantity--
+    this.saveCartToLocalStorage()
   }
 
   removeCompleteleyFromCart(product: TV) {
     this.cartItems = this.cartItems.filter(p => p.TV.ean != product.ean)
+    this.saveCartToLocalStorage()
   }
 
   getProducts() {
@@ -38,6 +48,7 @@ export class CartService {
 
   clearCart() {
     this.cartItems = [];
+    this.saveCartToLocalStorage()
     return this.cartItems;
   }
 
