@@ -1,2 +1,16 @@
-<p>product-page works!</p>
-<p>ean koji treba da prikazemo {{ean}}</p>
+<div class="container">
+   <div class="row d-flex justify-content-center flex-column">
+      <h1 class="mt-3 ml-auto mr-auto">{{tv.proizvodjac + " " + tv.model}}</h1>
+   </div>
+   <div class="row ">
+      <h2>Karakteristike</h2>
+      <table class="table table-striped mt-3 mb-4">
+         <tbody>
+            <tr *ngFor="let k of keys">
+               <th scope="row">{{k | titlecase}}</th>
+               <th scope="row">{{tv[k]}}</th>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>
