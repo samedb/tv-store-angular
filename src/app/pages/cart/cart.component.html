@@ -50,6 +50,9 @@
                </tr>
             </tbody>
          </table>
+         <div class="d-flex" *ngIf="cartItems.length > 0">
+            <button class="btn btn-primary ml-auto" (click)="clearCart()">Očisti korpu</button>
+         </div>
       </div>
    </div>
 </div>
