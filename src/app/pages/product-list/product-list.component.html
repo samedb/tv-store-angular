@@ -1,13 +1,14 @@
 <div class="container mt-4 mb-4">
    <div class="row align-items-center">
       <div *ngFor="let product of products" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-         <div class="mb-4" onclick="alert('Hello')"
+         <div class="mb-4" onclick="alert('Otvori detalje')"
             style="cursor: pointer; border: 1px solid lightgrey; border-radius: 5px; display: flex; flex-direction: column; background-color: #efefef;">
             <div class="mt-3 mb-3" style="width: 100%">
                <img src="{{product.slike[0]}}" alt="Nema slike" style="width: 100%;">
             </div>
             <h5 style="text-align: center;">{{product.proizvodjac}}</h5>
-            <h6 style="color: #555; text-align: center;">{{product.model}}</h6>
+            <h6 style="color: #555; text-align: center;">
+               {{product.dijagonala + '" ' + product.model}}</h6>
             <button class="ml-4 mr-4 mb-3 btn btn-primary" (click)="addToCart($event, product)">Dodaj u korpu</button>
 
          </div>

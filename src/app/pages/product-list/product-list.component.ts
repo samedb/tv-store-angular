@@ -15,14 +15,12 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log("On init za Home")
     this.products = this.productService.getProducts()
   }
 
 
   addToCart(event, product: TV): void {
     event.stopPropagation()
-    console.log("Dodajemo u korpu")
     this.cartService.addToCart(product)
   }
 }

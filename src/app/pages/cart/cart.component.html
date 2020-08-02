@@ -1,2 +1,51 @@
-<h4>Ovde ide lista svih predmeta koji su u korpi.</h4>
-<p *ngFor="let product of products">{{product.ean}}</p>
+<div class="container">
+   <div class="row align-items-center">
+      <div class="col-12 mt-5">
+         <div style="text-align: center;" *ngIf="cartItems.length === 0">
+            <h4>Nemate nijedan proizvod u vasoj korpi</h4>
+            <a routerLink="/">
+               <button class="btn btn-primary mt-3">Idi na listu proizvoda</button>
+            </a>
+         </div>
+
+         <table *ngIf="cartItems.length > 0" class="table table-striped">
+            <thead class="thead-dark">
+               <tr>
+                  <th scope="col">Proizvod</th>
+                  <th scope="col">Cena komada</th>
+                  <th scope="col">Kolicina</th>
+                  <th scope="col">Ukupna cena</th>
+                  <th scope="col"></th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let cartItem of cartItems">
+                  <th scope="row">{{cartItem.TV.proizvodjac + ' ' + cartItem.TV.model}}</th>
+                  <td>{{cartItem.TV.cena}}</td>
+                  <td>
+                     <button class="btn btn-primary" (click)="decreaseQuantity(cartItem.TV)">-</button>
+                     <span class="ml-3 mr-3">{{cartItem.quantity}}</span>
+                     <button class="btn btn-primary" (click)="increaseQuantity(cartItem.TV)">+</button>
+                  </td>
+                  <td>{{cartItem.TV.cena * cartItem.quantity}}</td>
+                  <td>
+                     <button class="btn btn-primary" (click)="removeFromCart(cartItem.TV)">x</button>
+                  </td>
+               </tr>
+
+               <tr>
+                  <td></td>
+                  <td></td>
+                  <th scope="row">
+                     Ukupno
+                  </th>
+                  <td>
+                     {{sum()}}
+                  </td>
+                  <td></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
