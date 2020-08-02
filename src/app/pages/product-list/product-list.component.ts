@@ -16,7 +16,11 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts()
+    this.loadProducts()
+  }
+
+  async loadProducts() {
+    this.products = await this.productService.getProducts()
   }
 
   goToProductPage(ean: string): void {

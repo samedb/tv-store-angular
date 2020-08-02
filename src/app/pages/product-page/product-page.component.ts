@@ -18,10 +18,10 @@ export class ProductPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe(async params => {
       const ean = params['ean']
       console.log(ean)
-      this.tv = this.productService.getProducts().find(p => p.ean === ean)
+      this.tv = await this.productService.getProductByEan(ean)
       this.keys = Object.keys(this.tv).filter(k => k !== "slike")
       this.selektovanaSlika = this.tv.slike[0]
     })
