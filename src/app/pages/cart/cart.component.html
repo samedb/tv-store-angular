@@ -20,7 +20,11 @@
             </thead>
             <tbody>
                <tr *ngFor="let cartItem of cartItems">
-                  <th scope="row">{{cartItem.TV.proizvodjac + ' ' + cartItem.TV.model}}</th>
+                  <th scope="row">
+                     <a [routerLink]="['/product', cartItem.TV.ean]">
+                        {{cartItem.TV.proizvodjac + ' ' + cartItem.TV.model}}
+                     </a>
+                  </th>
                   <td>{{cartItem.TV.cena}}</td>
                   <td>
                      <button class="btn btn-primary" (click)="decreaseQuantity(cartItem.TV)">-</button>
