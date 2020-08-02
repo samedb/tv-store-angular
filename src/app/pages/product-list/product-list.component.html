@@ -1,4 +1,23 @@
 <div class="container mt-4 mb-4">
+
+   <!-- Sortiranje -->
+   <div class="row">
+      <div class="col-sm-0 col-md-6"></div>
+      <div class="col-sm-6 col-md-2">
+         <button class="btn btn-primary w-100">Filter</button>
+      </div>
+      <div class="col-sm-6 col-md-4">
+         <select class="custom-select mb-4" (change)="sortProducts($event.target.value)">
+            <option>Sortiranje</option>
+            <option>Naziv A-Z</option>
+            <option>Naziv Z-A</option>
+            <option>Cena rastuće</option>
+            <option>Cena opadajuće</option>
+         </select>
+      </div>
+   </div>
+
+   <!-- Lista proizvoda -->
    <div class="row align-items-center">
       <div *ngFor="let product of productsToShow" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
          <div class="mb-4 product" (click)="goToProductPage(product.ean)">
@@ -15,8 +34,9 @@
 
       </div>
    </div>
-   <div class="d-flex flex-row-reverse">
 
+   <!-- Pagination -->
+   <div class="d-flex flex-row-reverse">
       <nav aria-label="...">
          <ul class="pagination">
             <li class="page-item" [class.disabled]="paginationIndex === 0">

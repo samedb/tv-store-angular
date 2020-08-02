@@ -50,4 +50,32 @@ export class ProductListComponent implements OnInit {
   range(x: number) {
     return new Array(x)
   }
+
+  sortProducts(value) {
+    switch (value) {
+      case "Naziv A-Z":
+        this.products = this.products.sort((x, y) => {
+          if (x.proizvodjac !== y.proizvodjac)
+            return x.proizvodjac.localeCompare(y.proizvodjac)
+          else
+            return x.model.localeCompare(y.model)
+        })
+        break
+      case "Naziv Z-A":
+        this.products = this.products.sort((x, y) => {
+          if (x.proizvodjac !== y.proizvodjac)
+            return y.proizvodjac.localeCompare(x.proizvodjac)
+          else
+            return y.model.localeCompare(x.model)
+        })
+        break
+      case "Cena rastuće":
+        this.products = this.products.sort((x, y) => x.cena - y.cena) // TODO i ovde za popust da uradim
+        break
+      case "Cena opadajuće":
+        this.products = this.products.sort((x, y) => y.cena - x.cena) // TODO i ovde za popust da uradim
+        break
+    }
+    this.setPage(0)
+  }
 }
