@@ -1,0 +1,8 @@
+.product {
+   cursor: pointer; 
+   border: 1px solid lightgrey; 
+   border-radius: 5px; 
+   display: flex; 
+   flex-direction: column; 
+   background-color: #efefef;
+}
