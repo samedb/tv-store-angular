@@ -102,7 +102,14 @@
             <h5 class="text-center">{{product.proizvodjac}}</h5>
             <h6 class="text-secondary text-center">
                {{product.dijagonala + '" ' + product.model}}</h6>
-            <h5 class="text-center">{{product.cena}} <span class="text-secondary">RSD</span></h5>
+            <h5 *ngIf="product.cena_na_popustu === 0" class="text-center">{{product.cena}} <span
+                  class="text-secondary">RSD</span></h5>
+            <h5 *ngIf="product.cena_na_popustu !== 0" class="text-center">
+               <s class="text-secondary">{{product.cena}}</s>
+               <span> {{product.cena_na_popustu}}</span>
+               <span class="text-secondary"> RSD</span>
+            </h5>
+
             <button class="ml-4 mr-4 mb-3 btn btn-primary" (click)="addToCart($event, product)">Dodaj u korpu</button>
 
          </div>

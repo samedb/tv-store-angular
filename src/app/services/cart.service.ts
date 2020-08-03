@@ -55,7 +55,8 @@ export class CartService {
   sum() {
     let sum = 0
     this.cartItems.forEach(element => {
-      sum += element.quantity * element.TV.cena
+      const cenaKojuRacunamo = element.TV.cena_na_popustu === 0 ? element.TV.cena : element.TV.cena_na_popustu
+      sum += element.quantity * cenaKojuRacunamo
     });
 
     return sum

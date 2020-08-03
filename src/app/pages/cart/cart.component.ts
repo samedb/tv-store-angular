@@ -33,6 +33,7 @@ export class CartComponent implements OnInit {
 
   decreaseQuantity(product: TV) {
     this.cartService.removeFromCart(product)
+    this.cartItems = this.cartService.getProducts()
   }
 
   clearCart() {

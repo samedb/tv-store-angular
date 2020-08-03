@@ -25,13 +25,15 @@
                         {{cartItem.TV.proizvodjac + ' ' + cartItem.TV.model}}
                      </a>
                   </th>
-                  <td>{{cartItem.TV.cena}}</td>
+                  <td>{{cartItem.TV.cena_na_popustu === 0 ? cartItem.TV.cena : cartItem.TV.cena_na_popustu}}</td>
                   <td>
                      <button class="btn btn-primary" (click)="decreaseQuantity(cartItem.TV)">-</button>
                      <span class="ml-3 mr-3">{{cartItem.quantity}}</span>
                      <button class="btn btn-primary" (click)="increaseQuantity(cartItem.TV)">+</button>
                   </td>
-                  <td>{{cartItem.TV.cena * cartItem.quantity}}</td>
+                  <td>
+                     {{(cartItem.TV.cena_na_popustu === 0 ? cartItem.TV.cena : cartItem.TV.cena_na_popustu) * cartItem.quantity}}
+                  </td>
                   <td>
                      <button class="btn btn-primary" (click)="removeFromCart(cartItem.TV)">x</button>
                   </td>

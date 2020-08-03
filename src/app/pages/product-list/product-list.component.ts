@@ -97,11 +97,19 @@ export class ProductListComponent implements OnInit {
         break
 
       case "Cena rastuće":
-        this.filteredProducts = this.filteredProducts.sort((x, y) => x.cena - y.cena) // TODO i ovde za popust da uradim
+        this.filteredProducts = this.filteredProducts.sort((x, y) => {
+          const cenaX = x.cena_na_popustu === 0 ? x.cena : x.cena_na_popustu
+          const cenaY = y.cena_na_popustu === 0 ? y.cena : y.cena_na_popustu
+          return cenaX - cenaY
+        })
         break
 
       case "Cena opadajuće":
-        this.filteredProducts = this.filteredProducts.sort((x, y) => y.cena - x.cena) // TODO i ovde za popust da uradim
+        this.filteredProducts = this.filteredProducts.sort((x, y) => {
+          const cenaX = x.cena_na_popustu === 0 ? x.cena : x.cena_na_popustu
+          const cenaY = y.cena_na_popustu === 0 ? y.cena : y.cena_na_popustu
+          return cenaY - cenaX
+        })
         break
     }
   }
