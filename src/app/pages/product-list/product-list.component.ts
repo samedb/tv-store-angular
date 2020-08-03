@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { ProductService } from "src/app/services/product.service"
 import { TV } from "src/app/models/TV"
 import { CartService } from 'src/app/services/cart.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -11,11 +13,22 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: TV[]
+  allProducts: TV[]
+  filteredProducts: TV[]
   productsToShow: TV[]
   paginationIndex: number
   numberOfPages: number
   readonly productsPerPage: number = 12
+  showFilters: boolean = false
+
+  // Za filtere
+  proizvodjac = ""
+  dijagonala = ""
+  rezolucija = ""
+  smartTv = ""
+
+  // Za sortiranja
+  sortBy: string = "Sortiranje..."
 
   constructor(private productService: ProductService, private cartService: CartService, private router: Router) { }
 
@@ -24,9 +37,16 @@ export class ProductListComponent implements OnInit {
   }
 
   async setup() {
-    this.products = await this.productService.getProducts()
-    this.numberOfPages = Math.ceil(this.products.length / this.productsPerPage)
-    console.log(this.numberOfPages)
+    this.allProducts = await this.productService.getProducts()
+    this.showProducts()
+  }
+
+  showProducts() {
+    // TODO ovde treba da dodje pretraga po kljucnoj reci, SEARCH
+    this.filteredProducts = this.allProducts
+    this.filter()
+    this.numberOfPages = Math.ceil(this.filteredProducts.length / this.productsPerPage)
+    this.sortProducts()
     this.setPage(0)
   }
 
@@ -34,7 +54,7 @@ export class ProductListComponent implements OnInit {
     this.paginationIndex = pageIndex
     const start = pageIndex * this.productsPerPage
     const end = start + this.productsPerPage
-    this.productsToShow = this.products.slice(start, end)
+    this.productsToShow = this.filteredProducts.slice(start, end)
     window.scrollTo(0, 0)
   }
 
@@ -51,31 +71,62 @@ export class ProductListComponent implements OnInit {
     return new Array(x)
   }
 
-  sortProducts(value) {
-    switch (value) {
+  sortProducts() {
+    switch (this.sortBy) {
       case "Naziv A-Z":
-        this.products = this.products.sort((x, y) => {
+        this.filteredProducts = this.filteredProducts.sort((x, y) => {
           if (x.proizvodjac !== y.proizvodjac)
             return x.proizvodjac.localeCompare(y.proizvodjac)
           else
             return x.model.localeCompare(y.model)
         })
         break
+
       case "Naziv Z-A":
-        this.products = this.products.sort((x, y) => {
+        this.filteredProducts = this.filteredProducts.sort((x, y) => {
           if (x.proizvodjac !== y.proizvodjac)
             return y.proizvodjac.localeCompare(x.proizvodjac)
           else
             return y.model.localeCompare(x.model)
         })
         break
+
       case "Cena rastuće":
-        this.products = this.products.sort((x, y) => x.cena - y.cena) // TODO i ovde za popust da uradim
+        this.filteredProducts = this.filteredProducts.sort((x, y) => x.cena - y.cena) // TODO i ovde za popust da uradim
         break
+
       case "Cena opadajuće":
-        this.products = this.products.sort((x, y) => y.cena - x.cena) // TODO i ovde za popust da uradim
+        this.filteredProducts = this.filteredProducts.sort((x, y) => y.cena - x.cena) // TODO i ovde za popust da uradim
         break
     }
-    this.setPage(0)
+  }
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters
+  }
+
+  filter() {
+    if (this.proizvodjac !== "")
+      this.filteredProducts = this.filteredProducts.filter(p => p.proizvodjac === this.proizvodjac)
+
+    if (this.dijagonala !== "")
+      this.filteredProducts = this.filteredProducts.filter(p => p.dijagonala.toString() === this.dijagonala)
+
+    if (this.rezolucija !== "") {
+      let temp = this.rezolucija.replace(" px", "")
+      let dimensions = temp.split(" x ")
+      this.filteredProducts = this.filteredProducts.filter(p => p.rezolucija.includes(dimensions[0]) || p.rezolucija.includes(dimensions[1]))
+    }
+
+    if (this.smartTv !== "")
+      this.filteredProducts = this.filteredProducts.filter(p => p.smart === this.smartTv)
+
+    this.showFilters = false
+  }
+
+  resetFilters() {
+    this.proizvodjac = this.dijagonala = this.rezolucija = this.smartTv = ""
+    this.filteredProducts = this.allProducts
+    this.showProducts()
   }
 }

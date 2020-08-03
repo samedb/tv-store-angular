@@ -1,20 +1,91 @@
 <div class="container mt-4 mb-4">
 
-   <!-- Sortiranje -->
    <div class="row">
       <div class="col-sm-0 col-md-6"></div>
+      <!-- Button za otvaranje i zatvaranje filtera -->
       <div class="col-sm-6 col-md-2">
-         <button class="btn btn-primary w-100">Filter</button>
+         <button class="btn btn-primary w-100" (click)="toggleFilters()">Filteri</button>
       </div>
+      <!-- Sortiranje -->
       <div class="col-sm-6 col-md-4">
-         <select class="custom-select mb-4" (change)="sortProducts($event.target.value)">
-            <option>Sortiranje</option>
+         <select class="custom-select mb-4" (change)="showProducts()" [(ngModel)]="sortBy">
+            <option>Sortiranje...</option>
             <option>Naziv A-Z</option>
             <option>Naziv Z-A</option>
             <option>Cena rastuće</option>
             <option>Cena opadajuće</option>
          </select>
       </div>
+   </div>
+
+   <!-- Filteri -->
+   <div *ngIf="showFilters" class="form">
+      <div class="row mb-3">
+         <!-- Proizvodjac -->
+         <label class="col-sm-12 col-md-3">Proizvođač:</label>
+         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="proizvodjac">
+            <option></option>
+            <option>ALPHA</option>
+            <option>ELIT</option>
+            <option>FAVORIT</option>
+            <option>FOX</option>
+            <option>HISENSE</option>
+            <option>LG</option>
+            <option>PHILIPS</option>
+            <option>SAMSUNG</option>
+            <option>SkyTech</option>
+            <option>SONY</option>
+            <option>TCL</option>
+            <option>VIVAX</option>
+            <option>VOX</option>
+         </select>
+      </div>
+      <div class="row mb-3">
+         <!-- Dijagonala -->
+         <label class="col-sm-12 col-md-3">Dijagonala:</label>
+         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="dijagonala">
+            <option></option>
+            <option>32</option>
+            <option>43</option>
+            <option>49</option>
+            <option>55</option>
+            <option>65</option>
+            <option>77</option>
+         </select>
+      </div>
+      <div class="row mb-3">
+         <!-- Rezolucija -->
+         <label class="col-sm-12 col-md-3">Rezolucija:</label>
+         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="rezolucija">
+            <option></option>
+            <option>1366 x 768 px</option>
+            <option>1920 x 1080 px</option>
+            <option>3840 x 2160 px</option>
+            <option>7680 x 4320 px</option>
+         </select>
+      </div>
+      <div class="row mb-3">
+         <!-- Smart TV -->
+         <label class="col-sm-12 col-md-3">Smart TV:</label>
+         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="smartTv">
+            <option></option>
+            <option>Da</option>
+            <option>Ne</option>
+         </select>
+      </div>
+
+      <div class="row">
+         <div class="col-sm-0 col-md-3"></div>
+         <!-- Ukljucivanje filtera -->
+         <div class="col-sm-12 col-md-3 mb-3">
+            <button class="btn btn-primary w-100" (click)="showProducts()">Primeni filtere</button>
+         </div>
+         <!-- Resetovanje filtera -->
+         <div class="col-sm-12 col-md-3 mb-3">
+            <button class="btn btn-outline-primary w-100" (click)="resetFilters()">Resetuj filtere</button>
+         </div>
+      </div>
+      <hr>
    </div>
 
    <!-- Lista proizvoda -->
