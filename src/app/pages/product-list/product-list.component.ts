@@ -21,6 +21,9 @@ export class ProductListComponent implements OnInit {
   readonly productsPerPage: number = 12
   showFilters: boolean = false
 
+  // Pretraga 
+  searchTerm = ""
+
   // Za filtere
   proizvodjac = ""
   dijagonala = ""
@@ -42,8 +45,10 @@ export class ProductListComponent implements OnInit {
   }
 
   showProducts() {
+    console.log(this.searchTerm)
     // TODO ovde treba da dodje pretraga po kljucnoj reci, SEARCH
-    this.filteredProducts = this.allProducts
+    const afterSearch = this.allProducts.filter(p => p.proizvodjac.toLowerCase().includes(this.searchTerm.toLowerCase()) || p.model.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    this.filteredProducts = afterSearch
     this.filter()
     this.numberOfPages = Math.ceil(this.filteredProducts.length / this.productsPerPage)
     this.sortProducts()
@@ -125,8 +130,12 @@ export class ProductListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.proizvodjac = this.dijagonala = this.rezolucija = this.smartTv = ""
-    this.filteredProducts = this.allProducts
+    this.proizvodjac = this.dijagonala = this.rezolucija = this.smartTv = this.searchTerm = ""
+    this.showProducts()
+  }
+
+  setSearchTerm(event) {
+    this.searchTerm = event
     this.showProducts()
   }
 }
