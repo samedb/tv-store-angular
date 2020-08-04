@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { TV } from 'src/app/models/TV';
+import { Component, OnInit } from '@angular/core'
+import { TV } from 'src/app/models/TV'
 import { CartService } from "src/app/services/cart.service"
-import { CartItem } from 'src/app/models/CartItem';
+import { CartItem } from 'src/app/models/CartItem'
 
 @Component({
   selector: 'app-cart',

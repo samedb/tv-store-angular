@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import { CartItem } from "../models/CartItem"
 import { TV } from "../models/TV"
 
@@ -6,7 +6,7 @@ import { TV } from "../models/TV"
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: CartItem[] = [];
+  cartItems: CartItem[] = []
 
   constructor() {
     // Ucitaj sve predmete iz localStore u korpu/cart
@@ -20,7 +20,7 @@ export class CartService {
   addToCart(product: TV) {
     const item = this.cartItems.find(p => p.TV.ean === product.ean)
     if (item === undefined)
-      this.cartItems.push(new CartItem(product, 1));
+      this.cartItems.push(new CartItem(product, 1))
     else
       item.quantity++
     this.saveCartToLocalStorage()
@@ -43,13 +43,13 @@ export class CartService {
   }
 
   getProducts() {
-    return this.cartItems;
+    return this.cartItems
   }
 
   clearCart() {
-    this.cartItems = [];
+    this.cartItems = []
     this.saveCartToLocalStorage()
-    return this.cartItems;
+    return this.cartItems
   }
 
   sum() {
@@ -57,7 +57,7 @@ export class CartService {
     this.cartItems.forEach(element => {
       const cenaKojuRacunamo = element.TV.cena_na_popustu === 0 ? element.TV.cena : element.TV.cena_na_popustu
       sum += element.quantity * cenaKojuRacunamo
-    });
+    })
 
     return sum
   }

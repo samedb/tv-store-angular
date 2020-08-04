@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit } from '@angular/core'
+import { UserService } from 'src/app/services/user.service'
 import { User } from "src/app/models/User"
-import { Router } from "@angular/router";
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-user-edit',
@@ -26,7 +26,7 @@ export class UserEditComponent implements OnInit {
   async onSubmit() {
     try {
       await this.userService.updateCurrentUser(this.user)
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl("/")
     } catch (error) {
       this.errorMessage = error.toString()
     }

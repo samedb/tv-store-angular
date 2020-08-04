@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from "src/app/services/user.service";
-import { Router } from "@angular/router";
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { UserService } from "src/app/services/user.service"
+import { Router } from "@angular/router"
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     try {
       await this.userService.login(this.username, this.password)
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl("/")
     } catch (error) {
       this.errorMessage = error.toString()
     }
   }
 
   fillLoginFields(u, p) {
-    this.username = u;
-    this.password = p;
-    this.onSubmit();
+    this.username = u
+    this.password = p
+    this.onSubmit()
   }
 
 }

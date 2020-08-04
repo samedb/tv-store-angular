@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { TV } from 'src/app/models/TV';
-import { ProductService } from 'src/app/services/product.service';
-import { CartService } from 'src/app/services/cart.service';
+import { TV } from 'src/app/models/TV'
+import { ProductService } from 'src/app/services/product.service'
+import { CartService } from 'src/app/services/cart.service'
 
 @Component({
   selector: 'app-product-page',

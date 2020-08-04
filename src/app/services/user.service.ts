@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { User } from '../models/User';
+import { Injectable } from '@angular/core'
+import { User } from '../models/User'
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class UserService {
       localStorage.setItem("token", this.currentUserToken)
     } else {
       const errorMessage = this.getErrorMessagesFromResponse(json)
-      throw new Error(errorMessage);
+      throw new Error(errorMessage)
     }
   }
 
@@ -69,7 +69,7 @@ export class UserService {
       const array = response[key]
       array.forEach(err => {
         errorMessage += err.toString() + "\n"
-      });
+      })
     })
 
     return errorMessage

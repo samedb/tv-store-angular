@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { Router, ActivatedRoute } from '@angular/router'
+import { FormControl } from '@angular/forms'
 import { ProductService } from "src/app/services/product.service"
 import { TV } from "src/app/models/TV"
-import { CartService } from 'src/app/services/cart.service';
+import { CartService } from 'src/app/services/cart.service'
 
 
 @Component({
@@ -46,7 +46,6 @@ export class ProductListComponent implements OnInit {
 
   showProducts() {
     console.log(this.searchTerm)
-    // TODO ovde treba da dodje pretraga po kljucnoj reci, SEARCH
     const afterSearch = this.allProducts.filter(p => p.proizvodjac.toLowerCase().includes(this.searchTerm.toLowerCase()) || p.model.toLowerCase().includes(this.searchTerm.toLowerCase()))
     this.filteredProducts = afterSearch
     this.filter()

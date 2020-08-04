@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit } from '@angular/core'
+import { UserService } from 'src/app/services/user.service'
 import { User } from "src/app/models/User"
-import { Router } from "@angular/router";
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   async onSubmit() {
     try {
       await this.userService.register(this.user)
-      this.router.navigateByUrl("/user-edit");
+      this.router.navigateByUrl("/user-edit")
     } catch (error) {
       this.errorMessage = error.toString()
     }
