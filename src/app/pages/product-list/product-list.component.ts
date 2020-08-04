@@ -45,7 +45,6 @@ export class ProductListComponent implements OnInit {
   }
 
   showProducts() {
-    console.log(this.searchTerm)
     const afterSearch = this.allProducts.filter(p => p.proizvodjac.toLowerCase().includes(this.searchTerm.toLowerCase()) || p.model.toLowerCase().includes(this.searchTerm.toLowerCase()))
     this.filteredProducts = afterSearch
     this.filter()

@@ -20,7 +20,6 @@ export class ProductPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(async params => {
       const ean = params['ean']
-      console.log(ean)
       this.tv = await this.productService.getProductByEan(ean)
       this.keys = Object.keys(this.tv).filter(k => k !== "slike")
       this.selektovanaSlika = this.tv.slike[0]
