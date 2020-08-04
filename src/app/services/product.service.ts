@@ -7,7 +7,7 @@ import { TV } from "../models/TV"
 })
 export class ProductService {
 
-  private baseUrl = "http://voyab.pythonanywhere.com"
+  private readonly baseUrl = "http://voyab.pythonanywhere.com"
 
   async getProducts(): Promise<TV[]> {
     const url = this.baseUrl + "/api/tv/"

@@ -16,10 +16,21 @@
       <ul class="navbar-nav">
 
          <li class="nav-item active">
-            <a class="nav-link mr-4" routerLink="/cart"><i class="fa fa-2x fa-shopping-cart"></i></a>
+            <a class="nav-link mr-4 d-flex align-items-center" routerLink="/cart">
+               <i class="fa fa-2x fa-shopping-cart mr-2"></i> Korpa
+            </a>
          </li>
-         <li class="nav-item active">
-            <a class="nav-link" routerLink="/about"><i class="fa fa-2x fa-user"></i></a>
+         <li class="nav-item active" *ngIf="userService.isLoggedIn()">
+            <a class="nav-link mr-4 d-flex align-items-center" routerLink="/wtf">
+               <i class="fa fa-2x fa-user mr-2"></i> Moj profil
+            </a>
+         </li>
+         <li class="nav-item active mr-4">
+            <a class="btn btn-primary d-flex align-items-center" routerLink="/login">
+               <i class="fa fa-2x mr-2" [class.fa-sign-in]="userService.isLoggedIn()"
+                  [class.fa-sign-out]="!userService.isLoggedIn()"></i>
+               {{userService.isLoggedIn() ? "Odjavi se" :"Prijavi se"}}
+            </a>
          </li>
 
       </ul>
