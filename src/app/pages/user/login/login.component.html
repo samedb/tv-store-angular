@@ -1,4 +1,4 @@
-<div class="text-center col-xs-12 col-md-7 col-lg-5" style=" margin:auto;">
+<div class="text-center col-xs-12 col-md-7 col-lg-5" style=" margin:auto;" (keydown.enter)="onSubmit()">
 
 
    <h1 class="display-4 mb-5 mt-3 text-center">Prijava</h1>
@@ -10,7 +10,7 @@
 
    <div class="form-group text-left">
       <label>Korisničko ime</label>
-      <input type="text" class="form-control form-control-lg" placeholder="Unesite korisničko ime" required
+      <input type="text" class="form-control form-control-lg" placeholder="Unesite korisničko ime" required autofocus
          [(ngModel)]="username">
    </div>
 
