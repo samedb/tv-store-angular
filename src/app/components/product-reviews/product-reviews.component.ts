@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductReviewsService } from "src/app/services/product-reviews.service"
 import { Review } from 'src/app/models/Review';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product-reviews',
@@ -10,24 +11,29 @@ import { Review } from 'src/app/models/Review';
 export class ProductReviewsComponent implements OnInit {
 
   @Input() ean: string
-  reviews: Review[]
+  reviews: Review[] = []
+  newReview: Review
 
-  newReview: Review = new Review(5, "", "", this.ean)
-
-  constructor(private productReviewService: ProductReviewsService) { }
+  constructor(private productReviewService: ProductReviewsService, private userService: UserService) { }
 
   async ngOnInit() {
+    this.newReview = new Review(5, "", "", this.ean)
     this.reviews = await this.productReviewService.getAllReviews(this.ean)
   }
 
   async sendReview() {
-    await this.productReviewService.sendReview(this.newReview)
-    // Ocisti polja za ocenjivanje
-    console.log("A")
-    this.newReview = new Review(5, "", "", this.ean)
-    console.log("B")
-    this.reviews = await this.productReviewService.getAllReviews(this.ean)
-    console.log("C")
+    if (!this.userService.isLoggedIn()) {
+      alert("Morate da budete prijavljeni da bi ste mogli da šaljete ocene!")
+    } else {
+      try {
+        await this.productReviewService.sendReview(this.newReview)
+        // Ocisti polja za ocenjivanje
+        this.newReview = new Review(5, "", "", this.ean)
+        this.reviews = await this.productReviewService.getAllReviews(this.ean)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   }
 
 }

@@ -1,7 +1,8 @@
 <h3 class="mb-3">Ocene drugih kupaca</h3>
+<h5 class="mb-3 text-secondary" *ngIf="reviews.length === 0">Budite prvi koji će oceniti ovaj proizvod</h5>
 <div *ngFor="let review of reviews" class="border rounded bg-light mb-3 p-2 d-flex">
    <div class="d-flex flex-column align-items-center mr-5 ml-3">
-      <h6>{{review.korisnik}}</h6>
+      <h6>{{review.korisnik_username}}</h6>
       <i class="fa fa-user fa-3x"></i>
 
    </div>
@@ -14,8 +15,10 @@
 </div>
 <br>
 <h3>Ocenite i Vi ovaj proizvod</h3>
-<input class="form-control mb-3" type="text" [(ngModel)]="newReview.komentar" />
+<textarea class="form-control mb-3" rows="5" [(ngModel)]="newReview.komentar"></textarea>
 <div class="d-flex justify-content-between">
    <app-star-rating [(value)]="newReview.ocena"></app-star-rating>
-   <button class="btn btn-primary ml-auto" (click)="sendReview()">Ocenite i dodajte recenziju za proizvod</button>
+   <button class="btn btn-primary ml-auto" (click)="sendReview()" [disabled]="newReview.komentar.length === 0">
+      Ocenite i dodajte recenziju za proizvod
+   </button>
 </div>
