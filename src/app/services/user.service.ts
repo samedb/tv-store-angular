@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +26,14 @@ export class UserService {
         "password": password
       })
     })
+    const json = await response.json()
 
     if (response.ok) {
-      const json = await response.json()
       this.currentUserToken = json.key
       localStorage.setItem("token", this.currentUserToken)
     } else {
-      throw new Error("Nesipravno korisničko ime ili lozinka!");
+      const errorMessage = this.getErrorMessagesFromResponse(json)
+      throw new Error(errorMessage);
     }
   }
 
@@ -42,5 +44,34 @@ export class UserService {
 
   isLoggedIn(): boolean {
     return this.currentUserToken !== ""
+  }
+
+  async register(user: User) {
+    const response = await fetch(
+      this.baseUrl + "/auth/registration/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    const json = await response.json()
+
+    if (!response.ok) {
+      const errorMessage = this.getErrorMessagesFromResponse(json)
+      return Promise.reject(new Error(errorMessage))
+    }
+  }
+
+  getErrorMessagesFromResponse(response: object): string {
+    let errorMessage = ""
+    Object.keys(response).forEach(key => {
+      const array = response[key]
+      array.forEach(err => {
+        errorMessage += err.toString() + "\n"
+      });
+    })
+
+    return errorMessage
   }
 }
