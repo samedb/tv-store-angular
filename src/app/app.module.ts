@@ -9,10 +9,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegistrationComponent } from './pages/registration/registration.component';
-import { UserEditComponent } from './pages/user-edit/user-edit.component';
-import { PasswordChangeComponent } from './pages/password-change/password-change.component';
+import { LoginComponent } from './pages/user/login/login.component';
+import { RegistrationComponent } from './pages/user/registration/registration.component';
+import { UserEditComponent } from './pages/user/user-edit/user-edit.component';
+import { PasswordChangeComponent } from './pages/user/password-change/password-change.component';
 
 @NgModule({
   declarations: [

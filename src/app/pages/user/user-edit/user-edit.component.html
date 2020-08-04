@@ -69,7 +69,9 @@
       </div>
    </div>
 
-   <a class="btn btn-primary w-100 text-light" routerLink="/password-change">Promeni lozinku</a>
-   <button class="btn btn-primary w-100 mt-3 mb-4" [disabled]="!canRegister()" (click)="onSubmit()">Zapamti izmene
+   <a class="btn btn-primary w-100 text-light mb-3 mt-3" routerLink="/password-change">Promeni lozinku</a>
+   <button class="btn btn-primary w-100 mb-3" [disabled]="!canRegister()" (click)="onSubmit()">
+      Zapamti izmene
    </button>
+   <a class="btn btn-primary w-100 text-light mb-5" routerLink="/">Idi na početnu stranu</a>
 </div>
