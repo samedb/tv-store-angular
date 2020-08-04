@@ -1,139 +1,133 @@
 <div class="container mt-4 mb-4">
 
    <div class="row">
-      <!-- Search bar -->
-      <div class="col-sm-12 col-md-4 mb-3">
-         <input class="form-control" type="text" placeholder="Pretraži proizvode..."
-            (ngModelChange)="setSearchTerm($event)" [(ngModel)]="searchTerm">
-      </div>
-      <!-- Button za otvaranje i zatvaranje filtera -->
-      <div class="col-sm-6 col-md-4">
-         <button class="btn btn-primary w-100" (click)="toggleFilters()">Filteri</button>
-      </div>
-      <!-- Sortiranje -->
-      <div class="col-sm-6 col-md-4">
-         <select class="custom-select mb-4" (change)="showProducts()" [(ngModel)]="sortBy">
-            <option>Sortiranje...</option>
-            <option>Naziv A-Z</option>
-            <option>Naziv Z-A</option>
-            <option>Cena rastuće</option>
-            <option>Cena opadajuće</option>
-         </select>
-      </div>
-   </div>
 
-   <!-- Filteri -->
-   <div *ngIf="showFilters" class="form">
-      <div class="row mb-3">
-         <!-- Proizvodjac -->
-         <label class="col-sm-12 col-md-3">Proizvođač:</label>
-         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="proizvodjac">
-            <option></option>
-            <option>ALPHA</option>
-            <option>ELIT</option>
-            <option>FAVORIT</option>
-            <option>FOX</option>
-            <option>HISENSE</option>
-            <option>LG</option>
-            <option>PHILIPS</option>
-            <option>SAMSUNG</option>
-            <option>SkyTech</option>
-            <option>SONY</option>
-            <option>TCL</option>
-            <option>VIVAX</option>
-            <option>VOX</option>
-         </select>
-      </div>
-      <div class="row mb-3">
-         <!-- Dijagonala -->
-         <label class="col-sm-12 col-md-3">Dijagonala:</label>
-         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="dijagonala">
-            <option></option>
-            <option>32</option>
-            <option>43</option>
-            <option>49</option>
-            <option>55</option>
-            <option>65</option>
-            <option>77</option>
-         </select>
-      </div>
-      <div class="row mb-3">
-         <!-- Rezolucija -->
-         <label class="col-sm-12 col-md-3">Rezolucija:</label>
-         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="rezolucija">
-            <option></option>
-            <option>1366 x 768 px</option>
-            <option>1920 x 1080 px</option>
-            <option>3840 x 2160 px</option>
-            <option>7680 x 4320 px</option>
-         </select>
-      </div>
-      <div class="row mb-3">
-         <!-- Smart TV -->
-         <label class="col-sm-12 col-md-3">Smart TV:</label>
-         <select class="form-control col-sm-12 col-md-9" [(ngModel)]="smartTv">
-            <option></option>
-            <option>Da</option>
-            <option>Ne</option>
-         </select>
-      </div>
+      <div class="col-sm-12 col-xl-2">
+         <div class="container">
+            <div class="row">
+               <!-- Search bar -->
+               <input class="form-control col-12 mb-3" type="text" placeholder="Pretraži proizvode..."
+                  (ngModelChange)="setSearchTerm($event)" [(ngModel)]="searchTerm">
+               <!-- Sortiranje -->
+               <select class="custom-select col-12 mb-4" (change)="showProducts()" [(ngModel)]="sortBy">
+                  <option>Sortiranje...</option>
+                  <option>Naziv A-Z</option>
+                  <option>Naziv Z-A</option>
+                  <option>Cena rastuće</option>
+                  <option>Cena opadajuće</option>
+               </select>
+               <!-- Button za otvaranje i zatvaranje filtera -->
+               <button class="btn btn-primary col-12 mb-4 w-100" (click)="toggleFilters()">Filteri</button>
 
-      <div class="row">
-         <div class="col-sm-0 col-md-3"></div>
-         <!-- Ukljucivanje filtera -->
-         <div class="col-sm-12 col-md-3 mb-3">
-            <button class="btn btn-primary w-100" (click)="showProducts()">Primeni filtere</button>
-         </div>
-         <!-- Resetovanje filtera -->
-         <div class="col-sm-12 col-md-3 mb-3">
-            <button class="btn btn-outline-primary w-100" (click)="resetFilters()">Resetuj filtere</button>
-         </div>
-      </div>
-      <hr>
-   </div>
+               <!-- Filteri -->
+               <div *ngIf="showFilters" class="col-12 container">
+                  <div class="row">
 
-   <!-- Lista proizvoda -->
-   <div class="row align-items-center">
-      <div *ngFor="let product of productsToShow" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-         <div class="mb-4 product" (click)="goToProductPage(product.ean)">
-            <div class="mt-3 mb-3" style="width: 100%">
-               <img src="{{product.slike[0]}}" alt="Nema slike" style="width: 100%;">
+                     <!-- Proizvodjac -->
+                     <label class="col-12">Proizvođač:</label>
+                     <select class="form-control w-100 mb-3" [(ngModel)]="proizvodjac">
+                        <option></option>
+                        <option>ALPHA</option>
+                        <option>ELIT</option>
+                        <option>FAVORIT</option>
+                        <option>FOX</option>
+                        <option>HISENSE</option>
+                        <option>LG</option>
+                        <option>PHILIPS</option>
+                        <option>SAMSUNG</option>
+                        <option>SkyTech</option>
+                        <option>SONY</option>
+                        <option>TCL</option>
+                        <option>VIVAX</option>
+                        <option>VOX</option>
+                     </select>
+                     <!-- Dijagonala -->
+                     <label class="col-12">Dijagonala:</label>
+                     <select class="form-control col-12 mb-3" [(ngModel)]="dijagonala">
+                        <option></option>
+                        <option>32</option>
+                        <option>43</option>
+                        <option>49</option>
+                        <option>55</option>
+                        <option>65</option>
+                        <option>77</option>
+                     </select>
+                     <!-- Rezolucija -->
+                     <label class="col-12">Rezolucija:</label>
+                     <select class="form-control col-12 mb-3" [(ngModel)]="rezolucija">
+                        <option></option>
+                        <option>1366 x 768 px</option>
+                        <option>1920 x 1080 px</option>
+                        <option>3840 x 2160 px</option>
+                        <option>7680 x 4320 px</option>
+                     </select>
+                     <!-- Smart TV -->
+                     <label class="col-sm-12">Smart TV:</label>
+                     <select class="form-control col-12 mb-3" [(ngModel)]="smartTv">
+                        <option></option>
+                        <option>Da</option>
+                        <option>Ne</option>
+                     </select>
+                     <!-- Ukljucivanje filtera -->
+                     <button class="btn btn-primary col-12 mb-3 w-100" (click)="showProducts()">Primeni filtere</button>
+                     <!-- Resetovanje filtera -->
+                     <button class="btn btn-outline-primary col-12 mb-3 w-100" (click)="resetFilters()">Resetuj
+                        filtere</button>
+                     <hr>
+                  </div>
+               </div>
             </div>
-            <h5 class="text-center">{{product.proizvodjac}}</h5>
-            <h6 class="text-secondary text-center">
-               {{product.dijagonala + '" ' + product.model}}</h6>
-            <h5 *ngIf="product.cena_na_popustu === 0" class="text-center">{{product.cena}} <span
-                  class="text-secondary">RSD</span></h5>
-            <h5 *ngIf="product.cena_na_popustu !== 0" class="text-center">
-               <s class="text-secondary">{{product.cena}}</s>
-               <span> {{product.cena_na_popustu}}</span>
-               <span class="text-secondary"> RSD</span>
-            </h5>
-
-            <button class="ml-4 mr-4 mb-3 btn btn-primary" (click)="addToCart($event, product)">Dodaj u korpu</button>
-
          </div>
-
       </div>
-   </div>
 
-   <!-- Pagination -->
-   <div class="d-flex flex-row-reverse">
-      <nav aria-label="...">
-         <ul class="pagination">
-            <li class="page-item" [class.disabled]="paginationIndex === 0">
-               <a class="page-link" (click)="setPage(paginationIndex - 1)">&laquo;</a>
-            </li>
+      <div class="col-sm-12 col-xl-10">
+         <div class="container">
+            <!-- Lista proizvoda -->
+            <div class="row align-items-center">
+               <div *ngFor="let product of productsToShow" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                  <div class="mb-4 product" (click)="goToProductPage(product.ean)">
+                     <div class="mt-3 mb-3" style="width: 100%">
+                        <img src="{{product.slike[0]}}" alt="Nema slike" style="width: 100%;">
+                     </div>
+                     <h5 class="text-center">{{product.proizvodjac}}</h5>
+                     <h6 class="text-secondary text-center">
+                        {{product.dijagonala + '" ' + product.model}}</h6>
+                     <h5 *ngIf="product.cena_na_popustu === 0" class="text-center">{{product.cena}} <span
+                           class="text-secondary">RSD</span></h5>
+                     <h5 *ngIf="product.cena_na_popustu !== 0" class="text-center">
+                        <s class="text-secondary">{{product.cena}}</s>
+                        <span> {{product.cena_na_popustu}}</span>
+                        <span class="text-secondary"> RSD</span>
+                     </h5>
 
-            <li *ngFor="let x of range(numberOfPages); let i = index" class="page-item"
-               [class.active]="paginationIndex === i">
-               <a class="page-link" (click)="setPage(i)">{{i + 1}}</a>
-            </li>
+                     <button class="ml-4 mr-4 mb-3 btn btn-primary" (click)="addToCart($event, product)">Dodaj u
+                        korpu</button>
 
-            <li class="page-item" [class.disabled]="paginationIndex === numberOfPages - 1">
-               <a class="page-link" (click)="setPage(paginationIndex + 1)">&raquo;</a>
-            </li>
-         </ul>
-      </nav>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex flex-row-reverse">
+               <nav aria-label="...">
+                  <ul class="pagination">
+                     <li class="page-item" [class.disabled]="paginationIndex === 0">
+                        <a class="page-link" (click)="setPage(paginationIndex - 1)">&laquo;</a>
+                     </li>
+
+                     <li *ngFor="let x of range(numberOfPages); let i = index" class="page-item"
+                        [class.active]="paginationIndex === i">
+                        <a class="page-link" (click)="setPage(i)">{{i + 1}}</a>
+                     </li>
+
+                     <li class="page-item" [class.disabled]="paginationIndex === numberOfPages - 1">
+                        <a class="page-link" (click)="setPage(paginationIndex + 1)">&raquo;</a>
+                     </li>
+                  </ul>
+               </nav>
+            </div>
+         </div>
+      </div>
    </div>
 </div>
