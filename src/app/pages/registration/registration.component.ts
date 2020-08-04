@@ -22,15 +22,14 @@ export class RegistrationComponent implements OnInit {
   async onSubmit() {
     try {
       await this.userService.register(this.user)
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/user-edit");
     } catch (error) {
       this.errorMessage = error.toString()
     }
   }
 
   canRegister(): boolean {
-    return this.user.first_name !== "" && this.user.last_name !== "" &&
-      this.user.email !== "" && this.user.username !== "" &&
+    return this.user.email !== "" && this.user.username !== "" &&
       this.user.password1 !== "" && this.user.password2 !== ""
   }
 }
