@@ -1,1 +1,85 @@
-<p>order-detail works!</p>
+<div class="container">
+   <div class="row">
+      <div class="col-12">
+         <h4 class="display-4 text-center mb-4">Detaji porudžbine</h4>
+      </div>
+      <div class="col-12 mb-4">
+         <h4>Ukupna cena svih artikala: {{cartService.sum()}} dinara.</h4>
+      </div>
+
+      <div class="alert alert-danger col-12" *ngIf="errorMessage.length > 0">
+         <span style="white-space: pre-line">{{errorMessage}}</span>
+      </div>
+   </div>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+         <label>Ime</label>
+         <input type="text" class="form-control" placeholder="Ime" [(ngModel)]="user.first_name">
+      </div>
+      <div class="form-group col-md-6">
+         <label>Prezime</label>
+         <input type="text" class="form-control" placeholder="Prezime" [(ngModel)]="user.last_name">
+      </div>
+   </div>
+
+   <div class="form-row">
+      <div class="form-group col-md-3">
+         <label>Ulica</label>
+         <input type="text" class="form-control" placeholder="Ulica" [(ngModel)]="user.ulica">
+      </div>
+      <div class="form-group col-md-2">
+         <label>Broj</label>
+         <input type="text" class="form-control" placeholder="Broj" [(ngModel)]="user.broj">
+      </div>
+      <div class="form-group col-md-3">
+         <label>Grad</label>
+         <input type="text" class="form-control" placeholder="Grad" [(ngModel)]="user.grad">
+      </div>
+      <div class="form-group col-md-2">
+         <label>Postanski broj</label>
+         <input type="text" class="form-control" placeholder="Postanski broj" [(ngModel)]="user.postanski_broj">
+      </div>
+      <div class="form-group col-md-2">
+         <label>Broj telefona</label>
+         <input type="text" class="form-control" placeholder="Broj telefona" [(ngModel)]="user.telefon">
+      </div>
+   </div>
+
+   <div class="form-row">
+      <div class="form-group col-md-3">
+         <label>Tip korisnika</label>
+         <select class="form-control" [(ngModel)]="user.tip">
+            <option value="fizicko">Fizičko lice</option>
+            <option value="pravno">Pravno lice</option>
+         </select>
+      </div>
+      <div class="form-group col-md-3" *ngIf="user.tip === 'pravno'">
+         <label>Naziv firme</label>
+         <input type="text" class="form-control" placeholder="Naziv firme" [(ngModel)]="user.naziv_firme">
+      </div>
+      <div class="form-group col-md-3" *ngIf="user.tip === 'pravno'">
+         <label>PIB</label>
+         <input type="text" class="form-control" placeholder="PIB" [(ngModel)]="user.pib">
+      </div>
+      <div class="form-group col-md-3" *ngIf="user.tip === 'pravno'">
+         <label>Matični broj firme</label>
+         <input type="text" class="form-control" placeholder="Matični broj firme" [(ngModel)]="user.maticni_broj_firme">
+      </div>
+   </div>
+
+   <div class="form-row">
+      <div class="form-group col-md-3">
+         <label>Način plaćanja</label>
+         <select class="form-control" [(ngModel)]="nacin_placanja">
+            <option>Plaćanje pouzećem</option>
+            <option>Kreditnom karticom</option>
+            <option>Virmanom</option>
+         </select>
+      </div>
+   </div>
+
+   <button class="btn btn-primary w-100 mb-5 mt-3" [disabled]="!canSubmit()" (click)="onSubmit()">
+      Završi kupovinu
+   </button>
+
+</div>

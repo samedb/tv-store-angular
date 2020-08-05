@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { TV } from 'src/app/models/TV'
 import { CartService } from "src/app/services/cart.service"
 import { CartItem } from 'src/app/models/CartItem'
+import { UserService } from 'src/app/services/user.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-cart',
@@ -11,8 +13,9 @@ import { CartItem } from 'src/app/models/CartItem'
 export class CartComponent implements OnInit {
 
   cartItems: CartItem[] = []
+  errorMessage: string = ""
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private userSerivce: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getProducts()
@@ -39,6 +42,13 @@ export class CartComponent implements OnInit {
   clearCart() {
     this.cartService.clearCart()
     this.cartItems = this.cartService.getProducts()
+  }
+
+  zavrsiKupovinu() {
+    if (this.userSerivce.isLoggedIn())
+      this.router.navigateByUrl("/order-detail")
+    else
+      this.errorMessage = "Morate da budete prijavljeni da bi ste zavrsili kupovinu!"
   }
 
 }
