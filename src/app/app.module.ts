@@ -14,7 +14,10 @@ import { RegistrationComponent } from './pages/user/registration/registration.co
 import { UserEditComponent } from './pages/user/user-edit/user-edit.component'
 import { PasswordChangeComponent } from './pages/user/password-change/password-change.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component'
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { SuccessComponent } from './pages/success/success.component';
+import { OrderListComponent } from './pages/order-list/order-list.component'
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
     UserEditComponent,
     PasswordChangeComponent,
     ProductReviewsComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    OrderDetailComponent,
+    SuccessComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
