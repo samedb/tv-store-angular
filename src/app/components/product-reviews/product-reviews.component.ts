@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core'
 import { ProductReviewsService } from "src/app/services/product-reviews.service"
-import { Review } from 'src/app/models/Review';
-import { UserService } from 'src/app/services/user.service';
+import { Review } from 'src/app/models/Review'
+import { UserService } from 'src/app/services/user.service'
 
 @Component({
   selector: 'app-product-reviews',

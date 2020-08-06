@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders.service';
+import { Component, OnInit } from '@angular/core'
+import { OrdersService } from 'src/app/services/orders.service'
 
 @Component({
   selector: 'app-order-list',
@@ -14,7 +14,6 @@ export class OrderListComponent implements OnInit {
 
   async ngOnInit() {
     this.orders = await this.ordersService.getAllMyOrders()
-    console.log(this.orders)
   }
 
 }

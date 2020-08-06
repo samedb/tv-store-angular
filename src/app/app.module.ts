@@ -12,11 +12,11 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { LoginComponent } from './pages/user/login/login.component'
 import { RegistrationComponent } from './pages/user/registration/registration.component'
 import { UserEditComponent } from './pages/user/user-edit/user-edit.component'
-import { PasswordChangeComponent } from './pages/user/password-change/password-change.component';
-import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
-import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
-import { SuccessComponent } from './pages/success/success.component';
+import { PasswordChangeComponent } from './pages/user/password-change/password-change.component'
+import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component'
+import { StarRatingComponent } from './components/star-rating/star-rating.component'
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component'
+import { SuccessComponent } from './pages/success/success.component'
 import { OrderListComponent } from './pages/order-list/order-list.component'
 
 @NgModule({

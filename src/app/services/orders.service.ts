@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { User } from '../models/User';
+import { Injectable } from '@angular/core'
+import { User } from '../models/User'
 import { CartItem } from "../models/CartItem"
-import { UserService } from './user.service';
+import { UserService } from './user.service'
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,6 @@ export class OrdersService {
 
     if (!response.ok) {
       const json = await response.json()
-      console.log(json)
       throw new Error("Greska prilikom zavrsavanja porudzbine!")
     }
   }
@@ -48,7 +47,6 @@ export class OrdersService {
     const json = await response.json()
 
     if (!response.ok) {
-      console.log(json)
       throw new Error("Greska prilikom zavrsavanja porudzbine!")
     }
 

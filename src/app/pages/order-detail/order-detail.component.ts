@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { CartService } from 'src/app/services/cart.service';
-import { OrdersService } from 'src/app/services/orders.service';
-import { User } from 'src/app/models/User';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { UserService } from 'src/app/services/user.service'
+import { CartService } from 'src/app/services/cart.service'
+import { OrdersService } from 'src/app/services/orders.service'
+import { User } from 'src/app/models/User'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-order-detail',
