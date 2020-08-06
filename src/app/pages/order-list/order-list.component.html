@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                <tr *ngFor="let artikl of order.naruceniartikl_set">
-                  <td>{{artikl.ean}}</td>
+                  <td><a href="/product/{{artikl.ean}}">{{artikl.ean}}</a></td>
                   <td>{{artikl.cena}}</td>
                   <td>{{artikl.kolicina}}</td>
                   <td>{{artikl.cena * artikl.kolicina}}</td>

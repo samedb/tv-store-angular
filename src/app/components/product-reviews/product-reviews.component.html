@@ -17,7 +17,7 @@
 <h3>Ocenite i Vi ovaj proizvod</h3>
 <textarea class="form-control mb-3" rows="5" [(ngModel)]="newReview.komentar"></textarea>
 <div class="d-flex justify-content-between">
-   <app-star-rating [(value)]="newReview.ocena"></app-star-rating>
+   <app-star-rating style="width: 160px;" [(value)]="newReview.ocena"></app-star-rating>
    <button class="btn btn-primary ml-auto" (click)="sendReview()" [disabled]="newReview.komentar.length === 0">
       Ocenite i dodajte recenziju za proizvod
    </button>
