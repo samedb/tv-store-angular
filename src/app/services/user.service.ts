@@ -5,7 +5,7 @@ import { User } from '../models/User'
   providedIn: 'root'
 })
 export class UserService {
-  private readonly baseUrl = "http://voyab.pythonanywhere.com"
+  private readonly baseUrl = "https://voyab.pythonanywhere.com"
 
   currentUserToken: string = ""
 

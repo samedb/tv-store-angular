@@ -8,7 +8,7 @@ import { UserService } from './user.service'
 })
 export class OrdersService {
 
-  private readonly baseUrl = "http://voyab.pythonanywhere.com"
+  private readonly baseUrl = "https://voyab.pythonanywhere.com"
 
   constructor(private userService: UserService) { }
 
