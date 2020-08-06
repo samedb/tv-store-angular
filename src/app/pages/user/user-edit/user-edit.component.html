@@ -72,10 +72,14 @@
          <input type="text" class="form-control" placeholder="Matični broj firme" [(ngModel)]="user.maticni_broj_firme">
       </div>
    </div>
+   <div class="d-flex flex-column align-items-center">
+      <button class="btn btn-primary w-50 mb-3 mt-3" [disabled]="!canRegister()" (click)="onSubmit()">
+         Zapamti izmene
+      </button>
+      <a class="btn btn-primary w-50 text-light mb-3 mt-3" routerLink="/password-change">Promeni lozinku</a>
+      <a class="btn btn-primary w-50 text-light mb-3 " routerLink="/order-list">Sve moje porudžbine</a>
+      <a class="btn btn-primary w-50 text-light mb-5" routerLink="/">Idi na početnu stranu</a>
 
-   <a class="btn btn-primary w-100 text-light mb-3 mt-3" routerLink="/password-change">Promeni lozinku</a>
-   <button class="btn btn-primary w-100 mb-3" [disabled]="!canRegister()" (click)="onSubmit()">
-      Zapamti izmene
-   </button>
-   <a class="btn btn-primary w-100 text-light mb-5" routerLink="/">Idi na početnu stranu</a>
+   </div>
+
 </div>

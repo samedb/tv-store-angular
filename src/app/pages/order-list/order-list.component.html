@@ -1,1 +1,36 @@
-<p>order-list works!</p>
+<div class="container">
+   <p class="display-4 text-center m-4">Moje porudžbine</p>
+   <div class="row border rounded mb-3 p-3 bg-light" *ngFor="let order of orders">
+      <div class="col-12 d-flex flex-column">
+         <p>Datum porudžbine: {{order.datumPorudzbine}}</p>
+         <p>Način plaćanja: {{order.nacinPlacanja}}</p>
+         <p>Adresa isporuke: {{order.ulica}} {{order.broj}} {{order.grad}} {{order.postanski_broj}}
+         </p>
+         <p>Završena porudžbina: {{order.zavrsenaPoruzbina ? "Da" : "Ne"}}</p>
+         <table class="table table-striped">
+            <thead class="thead-dark">
+               <tr>
+                  <th scope="col">Ean</th>
+                  <th scope="col">Cena</th>
+                  <th scope="col">Količina</th>
+                  <th scope="col">Ukupna cena</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let artikl of order.naruceniartikl_set">
+                  <td>{{artikl.ean}}</td>
+                  <td>{{artikl.cena}}</td>
+                  <td>{{artikl.kolicina}}</td>
+                  <td>{{artikl.cena * artikl.kolicina}}</td>
+               </tr>
+               <tr>
+                  <td></td>
+                  <td></td>
+                  <td align="right">Suma: </td>
+                  <td>{{order.ukupna_cena}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>

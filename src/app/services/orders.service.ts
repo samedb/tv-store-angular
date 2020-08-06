@@ -37,4 +37,22 @@ export class OrdersService {
     }
   }
 
+  async getAllMyOrders(): Promise<any[]> {
+    const response = await fetch(this.baseUrl + "/api/porudzbina/", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Token " + this.userService.currentUserToken
+      }
+    })
+    const json = await response.json()
+
+    if (!response.ok) {
+      console.log(json)
+      throw new Error("Greska prilikom zavrsavanja porudzbine!")
+    }
+
+    return json
+  }
+
 }
